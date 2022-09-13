@@ -1,8 +1,10 @@
 <?php
 
 use App\Http\Controllers\Theme\AboutController;
+use App\Http\Controllers\Theme\ContactController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\Theme\IndexController;
+use App\Http\Controllers\Theme\NewsController;
 
 /*
 |--------------------------------------------------------------------------
@@ -21,6 +23,9 @@ Route::get('/welcome', function () {
 Route::name('theme.')->middleware('locale')->group(function(){
     Route::get('/',[IndexController::class,'index'])->name('index');
     Route::get('/about',[AboutController::class,'index'])->name('about');
+    Route::get('/contact',[ContactController::class,'index'])->name('contact');
+    Route::get('/news',[NewsController::class,'index'])->name('news');
+    Route::get('/show/{id}',[NewsController::class,'show'])->name('show.news');
 
 });
 

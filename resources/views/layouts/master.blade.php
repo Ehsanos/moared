@@ -76,10 +76,10 @@
    <div class="container-fluid">
             <nav class="navbar navbar-light navbar-expand-xl">
                 <div class="container">
-                    <div class="d-xl-flex align-items-center align-content-center justify-content-xl-center px-1 mx-2 border-right"><a class="navbar-brand" data-bss-hover-animate="wobble" href="index.html" style="background: url(&quot;assets/img/Logo.svg&quot;) center / contain no-repeat;width: 75px;"></a></div><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+                    <div class="d-xl-flex align-items-center align-content-center justify-content-xl-center px-1 mx-2 border-right"><a class="navbar-brand" data-bss-hover-animate="wobble" href="{{route('theme.index')}}" style="background: url(&quot;assets/img/Logo.svg&quot;) center / contain no-repeat;width: 75px;"></a></div><button data-toggle="collapse" class="navbar-toggler" data-target="#navcol-1"><span class="sr-only">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
                     <div class="collapse navbar-collapse" id="navcol-1">
                         <ul class="navbar-nav mx-auto">
-                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="500"><a class="nav-link nav-link" href="index.html">{{lang('home')}}</a></li>
+                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="500"><a class="nav-link nav-link" href="{{route('theme.index')}}">{{lang('home')}}</a></li>
                             <li class="nav-item dropdown px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="50"><a class="dropdown-toggle nav-link" aria-expanded="false" data-toggle="dropdown" href="#">{{lang('service')}}</a>
                                 <div class="dropdown-menu"><a class="dropdown-item" href="#">__itemOne </a><a class="dropdown-item" href="#">__itemTwo </a><a class="dropdown-item" href="#">__ItemThree </a></div>
                             </li>
@@ -87,9 +87,9 @@
                                 <div class="dropdown-menu"><a class="dropdown-item" href="#">__itemOne </a><a class="dropdown-item" href="#">__itemTwo </a><a class="dropdown-item" href="#">__ItemThree </a></div>
                             </li>
                             <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="150"><a class="nav-link" href="#">{{lang('blog')}}</a></li>
-                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="#">{{lang('news')}}</a></li>
-                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="250"><a class="nav-link" href="about.html">{{lang('about_us')}}</a></li>
-                            <li class="nav-item" data-aos="zoom-in" data-aos-delay="350"><a class="nav-link text-uppercase px-4 donate" href="contact.html">{{lang('call_us')}}</a></li>
+                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="{{route('theme.news')}}">{{lang('news')}}</a></li>
+                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="250"><a class="nav-link" href="{{route('theme.about')}}">{{lang('about_us')}}</a></li>
+                            <li class="nav-item" data-aos="zoom-in" data-aos-delay="350"><a class="nav-link text-uppercase px-4 donate" href="{{route('theme.contact')}}">{{lang('call_us')}}</a></li>
                         </ul>
                     </div>
                 </div>
@@ -140,7 +140,7 @@
                 <div class="row text-center pt-3">
                     <div class="col-12 col-lg-2 d-flex flex-column justify-content-center">
                         <div class="d-flex flex-column justify-content-center align-items-center p-2">
-                            <div class="d-flex flex-row justify-content-start align-items-center p-2"><a href="#">&nbsp;<img src={{setting()->img}} width="170px"></a></div>
+                            <div class="d-flex flex-row justify-content-start align-items-center p-2"><a href="{{route('theme.index')}}">&nbsp;<img src={{asset('assets/img/Logo-white-text.svg')}} width="170px" bg-white></a></div>
                         </div>
                     </div>
                     {{-- <div class="col-12 col-lg-2">
@@ -153,12 +153,12 @@
                         </ul>
                     </div> --}}
                     <div class="col-12 col-lg-2">
-                        <h5>Our Company</h5>
+                        <h5>{{setting()->name}}</h5>
                         <ul>
-                            <li><a href="#">About Us</a></li>
-                            <li><a href="#">Company Information<br></a></li>
-                            <li><a href="#">Reviews</a></li>
-                            <li><a href="#">Contacts</a></li>
+                            <li><a href="{{route('theme.about')}}">{{lang('about_us')}}</a></li>
+                            <li><a href="{{route('theme.index')}}">{{lang('service')}}<br></a></li>
+                            <li><a href="{{route('theme.news')}}">{{lang('news')}}</a></li>
+                            <li><a href="{{route('theme.contact')}}">{{lang('call_us')}}</a></li>
                         </ul>
                     </div>
                     <div class="col-3 col-lg-2 align-self-center mx-auto">
@@ -167,17 +167,18 @@
                     <div class="col-12 col-lg-3 social-networks">
                         <div class="d-flex flex-column justify-content-center align-items-center contact-dev">
                             <div><a class="facebook" href="{{setting()->face}}"><i class="fa fa-facebook fa-lg"></i></a><a class="twitter" href="{{setting()->twitter}}"><i class="fa fa-twitter fa-lg"></i></a><a class="google fa-lg" href="{{setting()->youtube}}"><i class="fa fa-youtube fa-lg"></i></a><a class="linkedin fa-lg" href="{{setting()->linkedin}}"><i class="fa fa-linkedin fa-lg"></i></a></div>
-                            <div class="mt-4"><a class="contact-us" href="contact.html">contact us</a></div>
+                            <div class="mt-4"><a class="contact-us" href="{{route('theme.contact')}}">{{lang('call_us')}}</a></div>
                             <div class="mt-2 pt-5"><a href="#" onclick="&quot;goTo(0);return false;&quot;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-64 0 512 512" width="1em" height="1em" fill="currentColor" data-bss-hover-animate="bounce" class="fa-2x">
                                         <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
                                         <path d="M54.63 246.6L192 109.3l137.4 137.4C335.6 252.9 343.8 256 352 256s16.38-3.125 22.62-9.375c12.5-12.5 12.5-32.75 0-45.25l-160-160c-12.5-12.5-32.75-12.5-45.25 0l-160 160c-12.5 12.5-12.5 32.75 0 45.25S42.13 259.1 54.63 246.6zM214.6 233.4c-12.5-12.5-32.75-12.5-45.25 0l-160 160c-12.5 12.5-12.5 32.75 0 45.25s32.75 12.5 45.25 0L192 301.3l137.4 137.4C335.6 444.9 343.8 448 352 448s16.38-3.125 22.62-9.375c12.5-12.5 12.5-32.75 0-45.25L214.6 233.4z"></path>
                                     </svg></a></div>
                         </div>
+                        <a></a>
                     </div>
                 </div>
                 <div class="row footer-copyright">
                     <div class="col">
-                        <p>© 2022 Copyright Mada company | For Programing And Media Services</p>
+                        <p><a style="font-size:bold " href="https://mada-company.com">© 2022 Copyright Mada company |For Programing And Media Services </a></p>
                     </div>
                 </div>
             </div>
@@ -194,6 +195,11 @@
     <script src="https://unpkg.com/@bootstrapstudio/bootstrap-better-nav/dist/bootstrap-better-nav.min.js"></script>
     <script src="https://use.fontawesome.com/1744f3f671.js"></script>
     <script src="{{asset('assets/js/script.min.js')}}"></script>
+
+
+
+
+
 </body>
 
 </html>
