@@ -20,12 +20,14 @@ use App\Http\Controllers\Theme\NewsController;
 Route::get('/welcome', function () {
     return view('theme.index');
 });
+Route::get('/languages/{lang}',[IndexController::class,'change_lang'])->name('change.lang');
 Route::name('theme.')->middleware('locale')->group(function(){
     Route::get('/',[IndexController::class,'index'])->name('index');
-    Route::get('/about',[AboutController::class,'index'])->name('about');
-    Route::get('/contact',[ContactController::class,'index'])->name('contact');
-    Route::get('/news',[NewsController::class,'index'])->name('news');
-    Route::get('/show/{id}',[NewsController::class,'show'])->name('show.news');
+    
+    Route::resource('/abouts',AboutController::class)->only('index');
+    Route::resource('/contacts',ContactController::class)->only('index');
+    Route::resource('/posts',NewsController::class)->only(['index','show']);
+ 
 
 });
 

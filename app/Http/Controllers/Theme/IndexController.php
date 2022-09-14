@@ -17,6 +17,7 @@ class IndexController extends Controller
 {
     public function index()
     {
+       
         $posts=Post::limit(12)->latest()->get();
         $partners=Partner::limit(12)->latest()->get();
         $teams=Team::limit(12)->latest()->get();
@@ -26,4 +27,10 @@ class IndexController extends Controller
         $works=Work::limit(15)->latest()->get();
         return view('theme.index',compact('posts','partners','teams','parts','testimonials','categories','works'));
     }
+
+   public function change_lang($lang){
+    session()->forget('lang');
+    session()->put('lang',$lang);
+    return back();
+   }
 }
