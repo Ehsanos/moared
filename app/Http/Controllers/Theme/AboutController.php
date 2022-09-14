@@ -9,9 +9,7 @@ class AboutController extends Controller
 {
     public function index(){
 
-       
-
         return view('theme.about');
-        
+
     }
 }

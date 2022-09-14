@@ -8,19 +8,14 @@ use Illuminate\Http\Request;
 
 class NewsController extends Controller
 {
-   
+    public function index(){
+
+        return view('theme.news');
+    }
     
-public function index(){
-
-    return view('theme.news');
-}
-
-public function show(Post $post){
-
-    return view('theme.news',compact('post'));
-
-}
-
-
-
+    public function show(Post $post){
+    
+        return view('theme.news',compact('post'));
+    
+    }
 }

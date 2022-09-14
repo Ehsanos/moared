@@ -25,7 +25,7 @@
             <div class="col">
                 <div class="desc-video p-2">
                     <h3 class="text-uppercase font-weight-bold">{{lang('about_us')}}</h3>
-                    <p>{{}}</p>
+                    <p>{!!setting()->info!!}</p>
                 </div>
             </div>
         </div>
