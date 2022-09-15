@@ -25,7 +25,7 @@
                         class="fa fa-chevron-right"></i><span class="sr-only">Next</span></a></div>
             <ol class="carousel-indicators">
                 @foreach ($slider as $slide)
-                <li data-target="#carousel-1" data-slide-to="{{$loop->index}}" @if($loop->first) data-class="active" @endif></li>
+                <li data-target="#carousel-1" data-slide-to="{{$loop->index}}" @if($loop->index) data-class="active" @endif></li>
                 @endforeach
             </ol>
         </div>

@@ -107,10 +107,8 @@ $parts=App\Models\Part::limit(12)->latest()->get();
                                 </div>
                                 
                             </li>
-
-
-                          
-                           
+                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="#">{{lang('product')}}</a></li>
+                                                     
                             <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="{{route('theme.posts.index')}}">{{lang('news')}}</a></li>
                             <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="250"><a class="nav-link" href="{{route('theme.abouts.index')}}">{{lang('about_us')}}</a></li>
                             <li class="nav-item" data-aos="zoom-in" data-aos-delay="350"><a class="nav-link text-uppercase px-4 donate" href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></li>

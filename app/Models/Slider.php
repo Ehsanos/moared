@@ -20,5 +20,11 @@ class Slider extends Model implements HasMedia
         return $this->{"caption_".app()->getLocale()};
 
     }
+    public function getImgAttribute(){
+        if($this->hasMedia('sliders')){
+            return $this->getFirstMediaUrl('sliders');
+        }
+
+    }
 
 }
