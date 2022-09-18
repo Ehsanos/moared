@@ -34,13 +34,13 @@ $parts=App\Models\Part::limit(12)->latest()->get();
     <section class="top-hero pt-3 pb-1 text-white">
         <div class="container">
             <div class="row">
-                <div class="col-sm-12 col-md-12 col-lg-3 text-center d-flex d-xl-flex flex-row justify-content-center pt-2"><a href="#">
+                <div class="col-sm-12 col-md-12 col-lg-3 text-center d-flex d-xl-flex flex-row justify-content-center pt-2"><a href="tel:{{setting()->phone}}">
                         <p class="d-xl-flex align-items-xl-center text-white">&nbsp;<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" class="mx-2">
                                 <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
                                 <path d="M511.2 387l-23.25 100.8c-3.266 14.25-15.79 24.22-30.46 24.22C205.2 512 0 306.8 0 54.5c0-14.66 9.969-27.2 24.22-30.45l100.8-23.25C139.7-2.602 154.7 5.018 160.8 18.92l46.52 108.5c5.438 12.78 1.77 27.67-8.98 36.45L144.5 207.1c33.98 69.22 90.26 125.5 159.5 159.5l44.08-53.8c8.688-10.78 23.69-14.51 36.47-8.975l108.5 46.51C506.1 357.2 514.6 372.4 511.2 387z"></path>
                             </svg>{{lang('call_us')}} :{{setting()->phone}}</p>
                     </a></div>
-                <div class="col-sm-12 col-md-12 col-lg-3 text-center d-flex d-xl-flex flex-row justify-content-center pt-2"><a href="#">
+                <div class="col-sm-12 col-md-12 col-lg-3 text-center d-flex d-xl-flex flex-row justify-content-center pt-2"><a  href="mailto:{{setting()->email}}">
                         <p class="d-xl-flex align-items-xl-center text-white"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" class="mx-2">
                                 <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
                                 <path d="M464 64C490.5 64 512 85.49 512 112C512 127.1 504.9 141.3 492.8 150.4L275.2 313.6C263.8 322.1 248.2 322.1 236.8 313.6L19.2 150.4C7.113 141.3 0 127.1 0 112C0 85.49 21.49 64 48 64H464zM217.6 339.2C240.4 356.3 271.6 356.3 294.4 339.2L512 176V384C512 419.3 483.3 448 448 448H64C28.65 448 0 419.3 0 384V176L217.6 339.2z"></path>
@@ -62,10 +62,11 @@ $parts=App\Models\Part::limit(12)->latest()->get();
                         @if(setting()->instagram)
                         <a class="link-top px-2" href="{{setting()->instagram}}"><i class="fab fa-instagram fa-lg" data-bss-hover-animate="wobble"></i></a>
                         @endif
-                        @if(setting()->instagram)
-                        <a class="link-top px-2" href="#"><i class="fab fa-google-plus-g fa-lg" 
+                        @if(setting()->twitter)
+                        <a class="link-top px-2" href="{{setting()->twitter}}"><i class="fa fa-twitter fa-lg" 
                             data-bss-hover-animate="wobble"></i></a>
                             @endif
+                            
                             @if(setting()->linkedin)
                         <a class="link-top px-2" href="{{setting()->linkedin}}"><i class="fab fa-linkedin-in fa-lg" data-bss-hover-animate="wobble"></i></a>
                         @endif
@@ -96,7 +97,7 @@ $parts=App\Models\Part::limit(12)->latest()->get();
                           
                                 <div class="dropdown-menu">
                                     @forelse($parts as $part)
-                                    <a class="dropdown-item" href="#">{{$part->name}} </a>
+                                    <a class="dropdown-item" href="{{route('theme.parts.show',$part)}}">{{$part->name}} </a>
                                     @empty
                                     <div class="dropdown-menu"><a class="dropdown-item" href="#">No Data </a>
                                   
@@ -107,11 +108,11 @@ $parts=App\Models\Part::limit(12)->latest()->get();
                                 </div>
                                 
                             </li>
-                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="#">{{lang('product')}}</a></li>
+                            <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="{{route('theme.works.index')}}">{{lang('product')}}</a></li>
                                                      
                             <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="200"><a class="nav-link" href="{{route('theme.posts.index')}}">{{lang('news')}}</a></li>
                             <li class="nav-item px-3" data-aos="fade-left" data-aos-duration="450" data-aos-delay="250"><a class="nav-link" href="{{route('theme.abouts.index')}}">{{lang('about_us')}}</a></li>
-                            <li class="nav-item" data-aos="zoom-in" data-aos-delay="350"><a class="nav-link text-uppercase px-4 donate" href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></li>
+                            {{-- <li class="nav-item" data-aos="zoom-in" data-aos-delay="350"><a class="nav-link text-uppercase px-4 donate" href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></li> --}}
                         </ul>
                     </div>
                 </div>
@@ -180,16 +181,26 @@ $parts=App\Models\Part::limit(12)->latest()->get();
                             <li><a href="{{route('theme.abouts.index')}}">{{lang('about_us')}}</a></li>
                             <li><a href="{{route('theme.index')}}">{{lang('service')}}<br></a></li>
                             <li><a href="{{route('theme.posts.index')}}">{{lang('news')}}</a></li>
-                            <li><a href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></li>
+                            {{-- <li><a href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></li> --}}
                         </ul>
                     </div>
                     <div class="col-3 col-lg-2 align-self-center mx-auto">
-                        <div class="d-flex flex-row justify-content-center align-items-center"><iframe allowfullscreen="" frameborder="0" src="https://cdn.bootstrapstudio.io/placeholders/map.html" class="map" height="400"></iframe></div>
+                        <div  class="d-flex flex-row justify-content-center align-items-center">
+                            <div class="embed-responsive embed-responsive-1by1 rounded h-100">
+                                {!!setting()->map!!}
+                            </div>
+                          
+                        </div>
                     </div>
                     <div class="col-12 col-lg-3 social-networks">
                         <div class="d-flex flex-column justify-content-center align-items-center contact-dev">
-                            <div><a class="facebook" href="{{setting()->face}}"><i class="fa fa-facebook fa-lg"></i></a><a class="twitter" href="{{setting()->twitter}}"><i class="fa fa-twitter fa-lg"></i></a><a class="google fa-lg" href="{{setting()->youtube}}"><i class="fa fa-youtube fa-lg"></i></a><a class="linkedin fa-lg" href="{{setting()->linkedin}}"><i class="fa fa-linkedin fa-lg"></i></a></div>
-                            <div class="mt-4"><a class="contact-us" href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></div>
+                            <div><a class="facebook" href="{{setting()->face}}"><i class="fa fa-facebook fa-lg"></i></a><a class="twitter" href="{{setting()->twitter}}"><i class="fa fa-twitter fa-lg"></i></a><a class="google fa-lg" href="{{setting()->youtube}}"><i class="fa fa-youtube fa-lg"></i></a>
+                                
+                                <a class="linkedin fa-lg" href="{{setting()->linkedin}}"><i class="fa fa-linkedin fa-lg"></i>
+                                </a>
+                            
+                            </div>
+                            {{-- <div class="mt-4"><a class="contact-us" href="{{route('theme.contacts.index')}}">{{lang('call_us')}}</a></div> --}}
                             <div class="mt-2 pt-5"><a href="#" onclick="&quot;goTo(0);return false;&quot;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="-64 0 512 512" width="1em" height="1em" fill="currentColor" data-bss-hover-animate="bounce" class="fa-2x">
                                         <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
                                         <path d="M54.63 246.6L192 109.3l137.4 137.4C335.6 252.9 343.8 256 352 256s16.38-3.125 22.62-9.375c12.5-12.5 12.5-32.75 0-45.25l-160-160c-12.5-12.5-32.75-12.5-45.25 0l-160 160c-12.5 12.5-12.5 32.75 0 45.25S42.13 259.1 54.63 246.6zM214.6 233.4c-12.5-12.5-32.75-12.5-45.25 0l-160 160c-12.5 12.5-12.5 32.75 0 45.25s32.75 12.5 45.25 0L192 301.3l137.4 137.4C335.6 444.9 343.8 448 352 448s16.38-3.125 22.62-9.375c12.5-12.5 12.5-32.75 0-45.25L214.6 233.4z"></path>
@@ -197,12 +208,15 @@ $parts=App\Models\Part::limit(12)->latest()->get();
                         </div>
                     </div>
                 </div>
-                <div class="row footer-copyright">
-                    <div class="col">
-                        <p><a style="font-size:bold " href="https://mada-company.com">© 2022 Copyright Mada company |For Programing And Media Services </a></p>
-                    </div>
-                </div>
+             
+                
             </div>
+            <div class=" footer-copyright">
+                    
+                <p><a style="font-size:bold " href="https://mada-company.com">© 2022 Copyright Mada company |For Programing And Media Services </a></p>
+           
+        
+      </div>
         </footer>
     </section>
 

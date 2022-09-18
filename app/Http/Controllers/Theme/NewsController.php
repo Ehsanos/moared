@@ -9,13 +9,13 @@ use Illuminate\Http\Request;
 class NewsController extends Controller
 {
     public function index(){
-
-        return view('theme.news');
+$posts=Post::latest()->paginate(18);
+        return view('theme.posts',compact('posts'));
     }
     
     public function show(Post $post){
     
-        return view('theme.news',compact('post'));
+        return view('theme.post',compact('post'));
     
     }
 }
